@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LurkForWork</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- You can add your styles and scripts here -->
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/global.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap-5.2.3-dist/css/bootstrap.css" />
+</head>
+<body>
+    <!-- This is an example app structure, you can modify this as much as you choose --> 
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mynav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                  </li>
+                </ul>
+              </div> -->
+            </div>
+
+            <div class="profile" id="profile_content">
+              <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  profile
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#others_modal" id="myprofile">your own profile</a></li>
+                  <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#update_modal" id="updateprofile">Updating your profile</a></li>
+                  <!-- <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userlist_modal" id="userlistprofile">User List</a></li> -->
+                  
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#wathcing_modal" id="watchprofile">Watch a specific person</a></li>
+                </ul>
+
+                
+              </div>
+            </div>
+
+            <div class="addUpdate" id="addUpdate">
+              <div class="btn-group">
+                <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Job Option
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addjob_modal" >Adding a job</a></li>
+                  <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#selectjob_modal" >Updating/Deleting your job</a></li>
+                </ul>
+              </div>
+              
+            </div>
+
+            <button class="btn btn-secondary" id="logout_btn">logout</button>
+
+            
+          </nav>
+          
+    </header>
+
+    <!-- viewing profile modal-->
+    <div class="modal fade" id="others_modal" tabindex="-1" aria-labelledby="others_modal_Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="others_modal_Label"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="modal_img"></div>
+            <div id="modal_name"></div>
+            <div id="modal_email"></div>
+            <div id="modal_job"></div>
+            <div id="modal_watchee"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" id="watch_btn">Watch/Unwatch User</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--updating modal -->
+
+    <div class="modal fade" id="update_modal" tabindex="-1" aria-labelledby="update_Modal_Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="update_Modal_Label">Updating your profile</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" >
+            <div class="update_body"><span> email :</span><input type="text" id="update_email"></div>
+            <div class="update_body"><span>password: </span><input type="password" id="update_password"></div>
+            <div class="update_body"><span>name: </span><input type="text" id="update_name"></div>
+            <div  class="update_body"><span>image: </span><input type="file" id="update_img" id="update_img"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="update_save">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- watching modal -->
+
+    <div class="modal fade" id="wathcing_modal" tabindex="-1" aria-labelledby="wathcing_modal_Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="wathcing_modal_Label">Watch a specific person</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" >
+            <div >please input the user's email: <input type="text" id="watch_email"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="watch_save">Watching</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- adding job-->
+
+    <div class="modal fade" id="addjob_modal" tabindex="-1" aria-labelledby="addjob_modal_Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="addjob_modal_Label">Adding a job</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            
+          </div>
+          <div class="modal-body " >
+              <div class="add_body"><span>please input your job title: </span><input type="text" id="addjob_title"></div>
+              <div class="add_body"><span>please upload your job image: </span><input type="file" id="addjob_img"></div>
+              <div class="add_body"><span>please input your job start time: </span><input type="datetime-local" id="addjob_startat"></div>
+              <div class="add_body"><span>please input your job description :   </span><input type="text" id="addjob_description"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="addjob_btn">Adding</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- selecting job modal -->
+
+    <div class="modal fade" id="selectjob_modal" tabindex="-1" aria-labelledby="selectjob_modal_Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="selectjob_modal_Label">Selecting job</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" >
+            <ul id="select_job_ul">
+
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- updating job modal -->
+
+    <div class="modal fade" id="updatejob_modal" tabindex="-1" aria-labelledby="updatejob_modal_Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="updatejob_modal_Label">Updating your job</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" >
+            <div class="add_body"><span>please input your job title: </span><input type="text" id="update_title"></div>
+            <div class="add_body"><span>please upload your job image: </span><input type="file" id="updatejob_img"></div>
+            <div class="add_body"><span>please input your job start time: </span><input type="datetime-local" id="updatejob_startat"></div>
+            <div class="add_body"><span>please input your job description :   </span><input type="text" id="updatejob_description"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="updatejob_btn">Updating</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- deleting job modal -->
+
+    <div class="modal fade" id="deletejob_modal" tabindex="-1" aria-labelledby="userlist_modal_Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="userlist_modal_Label">User List</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" >
+            Are you sure to delete this job?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="deletejob_btn">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- confirmation modal -->
+
+    <div class="modal fade" id="userlist_modal" tabindex="-1" aria-labelledby="userlist_modal_Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="userlist_modal_Label">User List</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  modal
+
+    <div class="modal fade" id="userlist_modal" tabindex="-1" aria-labelledby="userlist_modal_Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="userlist_modal_Label">User List</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+    <main role="main">
+        <!-- app goes here --> 
+
+        <div class="content">
+
+          <div class="login" id="login">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label" id="">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" >
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" >
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="checkoutCheck">
+                <label class="form-check-label" for="exampleCheck1" >Check me out</label>
+              </div>
+              <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+              <button type="submit" class="btn btn-primary" id="register">Have no account?</button>
+          </div>
+
+          <div id="registration">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label" id="">Please input your Email address</label>
+                <input type="email" class="form-control" id="email_register" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label>Please input your Name</label>
+                <input id="name_register" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Please input your Password</label>
+                <input type="password" class="form-control" id="pwd_register">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Please input your Password again</label>
+                <input type="password" class="form-control" id="pwd2_register">
+                <label id="pwd_warning"></label>
+              </div>
+              <button type="submit" class="btn btn-primary" id="back_register">Back to login page</button>
+              <button type="submit" class="btn btn-primary" id="submit_register">Submit</button>
+              
+          </div>
+
+          <div id="job">
+            <h1>Welcome to lurkforwork!</h1>
+            <ul class="jobList" id="job_ul">
+              <li class="joblist_li">
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#job1" aria-expanded="false" aria-controls="collapseExample" id="btn2020">
+                  <span id="job_title" class="job_title"></span>
+                  <span id="job_creater" class="job_c"></span>
+                  <span id="job_creat" class="job_time"></span>
+                </button>
+                <div class="collapse" id="job1">
+                  <div class="card card-body job_content">
+                    <img class="job_img">
+                    <div class="job_description"></div>
+                    <div class="job_start"></div>
+                    <div ><span class="job_like"></span> <span> <button class="job_like_btn"><img class="like_img" width="20px" height="20px"></button></span> <div class="job_wholike"></div></div>
+                    <div class="comment"></div>
+                    <div><input type="text" class="leaveComment"/> <button type="button" class="btn btn-primary leaveComment_btn" >Leave a comment</button></div>
+                  </div>
+                </div>
+
+              </li>   
+
+              
+            </ul>
+          </div>
+            
+        </div>
+
+    </main>
+    <footer id="footer">
+        <p>&copy; lurkforwork.com 2022</p>
+        <img src="img/footerImg.gif"/>
+    </footer>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">Bootstrap</strong>
+          <small>11 mins ago</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="toast_body">
+
+        </div>
+      </div>
+    </div>
+
+    
+    <script type="module" src="src/main.js"></script>
+    <!-- <script type="module" src="bootstrap-5.2.3-dist/js/bootstrap.js"></script> -->
+    <script type="module" src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

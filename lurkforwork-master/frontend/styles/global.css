@@ -1,0 +1,173 @@
+/* base styles, feel free to edit */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+body{
+    background-image: url('../img/background.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+ul,li{
+    list-style: none;
+}
+
+
+.content{
+    width:1000px;
+    margin: auto;
+    margin-top: 150px;
+    /* background-color: red; */
+}
+
+.login{
+    width:50%;
+}
+
+footer{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.mynav{
+    margin-left: 500px;
+}
+
+#register,#submit_register{
+    float: right;
+}
+
+#registration{
+    display: none;
+}
+
+#pwd_warning{
+    color: red;
+}
+
+#job{
+    display: none;
+}
+
+#btn1{
+    width: 100%;
+}
+
+.jobList{
+    margin-top:100px;
+}
+
+.job_c{
+    margin-left: 20px;
+}
+
+.job_time{
+    margin-left:20px;
+}
+
+.job_content>div{
+    margin-top:20px;
+}
+
+.profile, .addUpdate{
+    display: none;
+}
+
+.btn a{
+    color: white
+}
+
+.username:hover{
+    color:red;
+}
+
+
+
+.btn-group button{
+    margin-right: 20px;
+}
+
+.add_body, .update_body{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom: 10px;
+}
+
+.joblist_li{
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.joblist_li>button{
+    width: 100%;
+}
+
+#logout_btn{
+    display: none;
+}
+
+@media screen and (min-width:800px) and (max-width:1200px){
+    .joblist_li button{
+        display: flex;
+        flex-direction: column;
+    }
+    .content{
+        width:500px;
+    }
+
+    .leaveComment_btn{
+        margin-left:50px;
+    }
+
+    .addUpdate{
+        margin-right: 100px;
+    }
+
+    .leaveComment_btn{
+        margin-top:50px;
+    }
+}
+
+@media screen and (min-width:400px) and (max-width:800px){
+
+    .joblist_li button span{
+        font-size: 12px;
+        
+    }
+    .joblist_li button{
+        display: flex;
+        flex-direction: column;
+    }
+    .content{
+        width:400px;
+    }
+
+    #submit{
+        width:100%;
+        margin-bottom:50px;
+    }
+
+
+    #register{
+        width: 100%;
+    }
+
+    .addUpdate{
+        margin-right: 100px;
+    }
+
+   
+
+    footer img{
+        margin-top:20px;
+        width: 50%;
+    }
+
+    .leaveComment_btn{
+        margin-top:50px;
+    }
+}
